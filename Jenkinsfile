@@ -17,11 +17,18 @@ pipeline{
         stage('install dependencies'){
             steps{
                 script{
-                    sh 'ls'
                     sh 'npm install'
+                    sh 'npm audit fix --force'
                 }
             }   
         }
+        // stage('build the image'){
+        //     steps{
+        //         script{
+        //             sh 'docker build -t nodeapp ./App'
+        //         }
+        //     }   
+        // }
         stage('Building image') {
             steps{
                 script {
