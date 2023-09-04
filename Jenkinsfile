@@ -20,7 +20,8 @@ pipeline{
             steps {
                 // Build and push your Docker image to a container registry
                 script {
-                    docker.build('mohamadsarmout/nodeapp:v2', '-f Dockerfile .')
+                    sh "echo wselt la hon"
+                    docker.build('mohamadsarmout/nodeapp:v3', '-f Dockerfile .')
                     // docker.withRegistry('https://your-registry-url', 'your-registry-credentials') {
                     //     docker.image('your-docker-image:tag').push()
                     }
@@ -29,8 +30,9 @@ pipeline{
         stage('Deploy to Kubernetes') {
             steps {
                 // Apply your Kubernetes YAML files to create Deployment and Service
-                sh "kubectl apply -f deployment.yaml"
-                sh "kubectl apply -f service.yaml"
+                sh "kubectl apply -f deployment.yml"
+                sh "kubectl apply -f service-internal.yml"
+                sh "kubectl apply -f service-nodeport.yml"
             }
         }
     }
