@@ -9,7 +9,7 @@
 </head>
 
 <body>
-
+    <h2>This Is Just A Test NodeJs Server API</h2>
     <button onclick="addStudent()">ADD STUDENT</button>
     <input type="text" name="" id="txtname">
     <br>
@@ -21,9 +21,9 @@
                 .then(response => response.json())
                 .then(json => {
                     var StudentsSelect = document.getElementById('students')
-                    json.Sheet1.forEach(element => {
+                    json.forEach(element => {
                         var option = document.createElement('option')
-                        option.innerHTML = element.A;
+                        option.innerHTML = element;
                         StudentsSelect.appendChild(option)
                     });
                 });

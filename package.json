@@ -6,13 +6,11 @@
     "express": "^4.18.1",
     "i": "^0.3.7",
     "ip": "^1.1.8",
-    "npm": "^8.18.0",
-    "xlsx": "^0.18.5"
+    "npm": "^8.18.0"
   },
   "name": "coding",
   "version": "1.0.0",
   "main": "mhd.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
