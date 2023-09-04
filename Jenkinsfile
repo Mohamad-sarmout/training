@@ -3,27 +3,41 @@ pipeline{
     tools { 
         nodejs "node"
     }
+    environment {
+        registry = "mohamadsarmout/nodeapp"
+        registryCredential = 'dockerhub'
+        dockerImage = ''
+    } 
     stages {
         stage('Checkout') {
             steps {
                 checkout scm
-                // https://github.com/Mohamad-sarmout/training.git
             }
         }
         stage('install dependencies'){
             steps{
                 script{
+                    sh 'ls'
                     sh 'npm install'
                 }
             }   
         }
-        stage('build the image'){
+        stage('Building image') {
             steps{
-                script{
-                    sh 'docker build -t nodeapp .'
+                script {
+                    dockerImage = docker.build registry + ":latest"
+                    }
                 }
-            }   
-        }
+            }
+        stage('Push Image') {
+            steps{
+                script {
+                    docker.withRegistry( '', registryCredential){                            
+                    dockerImage.push()
+                        }
+                    }
+                } 
+            }
         stage('Deploying + add services into k8s'){
             steps{
                 sh 'cd k8s'
