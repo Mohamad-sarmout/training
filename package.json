@@ -8,5 +8,24 @@
     "ip": "^1.1.8",
     "npm": "^8.18.0",
     "xlsx": "^0.18.5"
-  }
+  },
+  "name": "coding",
+  "version": "1.0.0",
+  "main": "mhd.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mohamad-sarmout/training.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mohamad-sarmout/training/issues"
+  },
+  "homepage": "https://github.com/Mohamad-sarmout/training#readme",
+  "description": ""
 }

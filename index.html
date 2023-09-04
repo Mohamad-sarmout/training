@@ -9,23 +9,26 @@
 </head>
 
 <body>
+
     <button onclick="addStudent()">ADD STUDENT</button>
     <input type="text" name="" id="txtname">
     <br>
     <select id="students"></select>
     <script>
+
         function getStudents() {
             fetch('http://localhost:3000/users')
                 .then(response => response.json())
                 .then(json => {
                     var StudentsSelect = document.getElementById('students')
-                    json.Responses.forEach(element => {
+                    json.Sheet1.forEach(element => {
                         var option = document.createElement('option')
                         option.innerHTML = element.A;
                         StudentsSelect.appendChild(option)
                     });
                 });
         }
+
         function addStudent() {
             var name = document.getElementById('txtname').value;
             const rowResponse = fetch(
@@ -37,10 +40,13 @@
                         'Accept': 'application/json',
                         'Content-type': 'application/json',
                     },
-                    body: JSON.stringify({ id: 785, name: name })
+                    body: JSON.stringify(
+                        { id: 55, name: name }
+                    )
                 }
             )
         }
+
         getStudents();
     </script>
 </body>
