@@ -4,6 +4,7 @@ const cors = require('cors')
 const path = require('path');
 const bodyParser = require("body-parser");
 const excelToJson = require('convert-excel-to-json');
+const xlsx = require('xlsx')
 
 app.use(bodyParser.urlencoded({ extended: false })); // krmel 2e2der 2e2ra req.body
 app.use(bodyParser.json());
@@ -22,8 +23,24 @@ app.get('/users', function (req, res) {
     console.log(users);
 })
 
+app.get('/welcome', function (req, res) {
+
+    res.send("Hi all how r u hope you r doing well");
+})
+
+
 app.post('/addStudent', function (req, res) {
     console.log(req.body);
+    // const convertJsonToExcel = () => {
+    // const data = [req.body]
+    // const worksheet = xlsx.utils.json_to_sheet(data)
+    // const workbook = xlsx.utils.book_new()
+    // xlsx.utils.book_append_sheet(workbook, worksheet, data)
+    // xlsx.write(workbook, {bookType : "xlsx" , type : "buffer"})
+    // xlsx.write(workbook, {bookType : "xlsx" , type : "binary"})
+    // xlsx.writeFile(workbook, "data.xlsx")
+    // };
+    // convertJsonToExcel();
     res.end('student has been added')
 })
 
