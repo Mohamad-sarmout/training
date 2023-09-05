@@ -16,23 +16,25 @@ pipeline{
                 }
             }   
         }
-        stage('Build and Push Docker Image') {
+        stage('Install Skaffold') {
             steps {
-                // Build and push your Docker image to a container registry
-                script {
-                    sh "echo wselt la hon"
-                    // docker.build('nodeapp:v3', '-f Dockerfile .')
-                    // docker.withRegistry('https://your-registry-url', 'your-registry-credentials') {
-                    //     docker.image('your-docker-image:tag').push()
+                sh '''
+                mkdir -p ~/bin
+                curl -Lo ~/bin/skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
+                chmod +x ~/bin/skaffold
+                '''
+        // Add the custom bin directory to the PATH
+            script {
+                env.PATH = "${env.HOME}/bin:${env.PATH}"
                 }
             }
         }
-        stage('Deploy to Kubernetes') {
+        stage('Deploy') {
             steps {
-                // Apply your Kubernetes YAML files to create Deployment and Service
-                sh "kubectl apply -f deployment.yml"
-                sh "kubectl apply -f service-internal.yml"
-                sh "kubectl apply -f service-nodeport.yml"
+                sh '''
+                chmod +x mvnw
+                skaffold run --default-repo=localhost:4000
+                '''
             }
         }
     }
