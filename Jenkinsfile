@@ -32,6 +32,7 @@ pipeline{
         stage('Deploy') {
             steps {
                 sh '''
+                chown jenkins:jenkins /var/run/docker.sock
                 skaffold dev 
                 '''
             }
