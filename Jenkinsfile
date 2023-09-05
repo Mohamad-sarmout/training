@@ -32,7 +32,6 @@ pipeline{
         stage('Deploy') {
             steps {
                 sh '''
-                chmod +x mvnw
                 skaffold run --default-repo=localhost:4000
                 '''
             }
