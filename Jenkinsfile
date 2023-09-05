@@ -21,7 +21,7 @@ pipeline{
                 // Build and push your Docker image to a container registry
                 script {
                     sh "echo wselt la hon"
-                    // docker.build('mohamadsarmout/nodeapp:v3', '-f Dockerfile .')
+                    // docker.build('nodeapp:v3', '-f Dockerfile .')
                     // docker.withRegistry('https://your-registry-url', 'your-registry-credentials') {
                     //     docker.image('your-docker-image:tag').push()
                 }

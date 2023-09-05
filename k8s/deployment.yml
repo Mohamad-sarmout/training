@@ -15,7 +15,7 @@ spec:
         app: nodeapp-label
     spec:
       containers:
-        - name: nodeappapi
+        - name: nodeapp
           image: nodeapp
           ports:
             - containerPort: 3000
