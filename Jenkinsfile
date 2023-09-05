@@ -32,7 +32,7 @@ pipeline{
         stage('Deploy') {
             steps {
                 sh '''
-                skaffold run --default-repo=localhost:4000
+                skaffold dev 
                 '''
             }
         }
